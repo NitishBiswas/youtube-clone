@@ -33,7 +33,7 @@ const Signup = () => {
                                 icon: 'success',
                                 title: 'Successfully Registered!',
                                 showConfirmButton: false,
-                                timer: 2000
+                                timer: 3000
                             })
                             setLoading(false);
                             navigate('/youtube-clone');
@@ -43,8 +43,9 @@ const Signup = () => {
                                 icon: 'error',
                                 title: error.message,
                                 showConfirmButton: false,
-                                timer: 5000
+                                timer: 3000
                             })
+                            setLoading(false);
                         });
                 })
                 .catch((error) => {
@@ -53,8 +54,9 @@ const Signup = () => {
                         icon: 'error',
                         title: error.message,
                         showConfirmButton: false,
-                        timer: 5000
+                        timer: 3000
                     })
+                    setLoading(false);
                 });
         } else {
             Swal.fire({
@@ -62,7 +64,7 @@ const Signup = () => {
                 icon: 'error',
                 title: 'Please fill out all the required fields!',
                 showConfirmButton: false,
-                timer: 5000
+                timer: 3000
             })
             setLoading(false);
         }

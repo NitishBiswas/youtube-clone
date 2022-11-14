@@ -24,7 +24,7 @@ const Login = () => {
                         icon: 'success',
                         title: 'Successfully logged in!',
                         showConfirmButton: false,
-                        timer: 2000
+                        timer: 3000
                     })
                     setLoading(false);
                     navigate('/youtube-clone');
@@ -35,8 +35,9 @@ const Login = () => {
                         icon: 'error',
                         title: error.message,
                         showConfirmButton: false,
-                        timer: 2000
+                        timer: 3000
                     })
+                    setLoading(false);
                 });
         } else {
             Swal.fire({
@@ -44,8 +45,9 @@ const Login = () => {
                 icon: 'error',
                 title: 'Please fill out all the required fields!',
                 showConfirmButton: false,
-                timer: 2000
+                timer: 3000
             })
+            setLoading(false);
         }
     }
 

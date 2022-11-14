@@ -19,7 +19,7 @@ const Header = ({ user }) => {
         <>
             <Navbar bg="white" variant="light" className='shadow'>
                 <Container>
-                    <Navbar.Brand className='header-title d-flex py-0' style={{ cursor: 'pointer' }} onClick={() => navigate('/youtube-clone')}>
+                    <Navbar.Brand className='header-title d-flex py-0' style={{ cursor: 'pointer' }} onClick={() => navigate('/')}>
                         <FaYoutube size={40} color={'red'} />&nbsp;&nbsp;
                         <h3 className='pt-1 pb-0 m-0'>YouTube Videos</h3>
                     </Navbar.Brand>

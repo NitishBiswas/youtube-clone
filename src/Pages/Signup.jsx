@@ -36,7 +36,7 @@ const Signup = () => {
                                 timer: 3000
                             })
                             setLoading(false);
-                            navigate('/youtube-clone');
+                            navigate('/');
                         }).catch((error) => {
                             Swal.fire({
                                 position: 'top-end',

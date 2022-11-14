@@ -1,49 +1,46 @@
-import { useEffect, useState } from 'react';
 import './App.css';
-
 import Header from './components/Header.Component';
-import SearchBar from './components/SearchBar.Component';
-import VideoList from './components/VideoList.Component';
-import Video from './components/Video.Component';
+import Home from './Pages/Home';
+import { Routes, Route } from "react-router-dom";
+import Login from './Pages/Login';
+import Signup from './Pages/Signup';
+import { useEffect, useState } from 'react';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth, db } from './firebase/firebase';
+import { doc, getDoc } from 'firebase/firestore';
+
 
 function App() {
-  const [videos, setVideos] = useState([]);
-  const [video, setVideo] = useState('');
 
-  const getVideos = text => {
-
-    fetch(`https://www.googleapis.com/youtube/v3/search?key=AIzaSyBpMkTsh9ijCT0oYWtR7RDzqZg10jnZ5wc&maxResults=6&q=${text}&type=video&part=snippet&videoEmbeddable=true`)
-      .then(res => res.json())
-      .then(res => {
-        setVideos(res.items);
-        setVideo(res.items[0]);
-      }).catch(err => console.log(err));
-  }
-
-  const onSubmitText = text => {
-    getVideos(text);
-  }
+  const [user, setUser] = useState([]);
 
   useEffect(() => {
-    getVideos('react js videos');
+    onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        const uid = user.uid;
+        const docRef = doc(db, "users", uid);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          setUser(docSnap.data())
+        } else {
+          setUser([]);
+        }
+      } else {
+        setUser([]);
+      }
+    });
   }, [])
 
   return (
     <div className="App container">
-      <Header />
-      <div className='row mt-4'>
-        <div className='col-md-8'>
-          <div className='col-md-12'>
-            <SearchBar onSubmitText={onSubmitText} />
-          </div>
-          <div className='col-md-12 mt-4'>
-            <Video video={video} />
-          </div>
-        </div>
-        <div className='col-md-4'>
-          <VideoList videos={videos} onClick={(clickedVideo) => setVideo(clickedVideo)} />
-        </div>
-      </div>
+      <Header user={user} />
+      <Routes>
+        <Route path='/youtube-clone' element={<Home user={user} />} />
+        {user.length === 0 ? <>
+          <Route path='/login' element={<Login />} />
+          <Route path='/signup' element={<Signup />} />
+        </> : null}
+      </Routes>
     </div>
   );
 }

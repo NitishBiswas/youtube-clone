@@ -8,10 +8,38 @@
   font-family: 'Lobster', cursive;
 }
 
+.header-title :hover {
+  color: red;
+}
 
 .video-list-text p {
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+.login-profile {
+  cursor: pointer;
+}
+
+
+.login {
+  height: 100vh;
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
+}
+
+.login h1 {
+  font-family: 'Lobster', cursive;
+}
+
+.profile-view {
+  position: absolute;
+  right: 0;
+  top: 70px;
+  height: auto;
+  width: 300px;
+  background-color: white;
 }

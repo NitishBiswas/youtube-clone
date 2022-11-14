@@ -12,7 +12,7 @@ const Profile = ({ user, onChange }) => {
                 icon: 'success',
                 title: 'Successfully logged out!',
                 showConfirmButton: false,
-                timer: 2000
+                timer: 3000
             })
             onChange();
         }).catch((error) => {
@@ -21,7 +21,7 @@ const Profile = ({ user, onChange }) => {
                 icon: 'error',
                 title: error.message,
                 showConfirmButton: false,
-                timer: 2000
+                timer: 3000
             })
         });
     }

@@ -27,7 +27,7 @@ const Login = () => {
                         timer: 3000
                     })
                     setLoading(false);
-                    navigate('/');
+                    navigate('/youtube-clone');
                 })
                 .catch((error) => {
                     Swal.fire({
@@ -71,7 +71,7 @@ const Login = () => {
                         <button id='button' onClick={loginAccount} className='btn btn-primary shadow w-100' disabled={loading}>{loading ? 'Please wait...' : 'Login'}</button>
                     </div>
                     <div className='d-flex justify-content-center mt-4'>
-                        <p>Don't have an account? </p><p onClick={() => navigate('/signup')} className='mx-2 text-primary' style={{ cursor: 'pointer' }}>Register</p>
+                        <p>Don't have an account? </p><p onClick={() => navigate('/youtube-clone/signup')} className='mx-2 text-primary' style={{ cursor: 'pointer' }}>Register</p>
                     </div>
                 </div>
             </div>

@@ -36,7 +36,7 @@ const Signup = () => {
                                 timer: 3000
                             })
                             setLoading(false);
-                            navigate('/');
+                            navigate('/youtube-clone');
                         }).catch((error) => {
                             Swal.fire({
                                 position: 'top-end',
@@ -76,8 +76,24 @@ const Signup = () => {
         uploadBytes(imageRef, e.target.files[0]).then(res => {
             getDownloadURL(res.ref).then(url => {
                 setImageURL(url);
-            }).catch(err => { console.log("Error ", err) });
-        }).catch(err => { console.log("Error ", err) });
+            }).catch(err => {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: err.message,
+                    showConfirmButton: false,
+                    timer: 3000
+                })
+            });
+        }).catch(err => {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: err.message,
+                showConfirmButton: false,
+                timer: 3000
+            })
+        });
     }
 
     return (
@@ -115,7 +131,7 @@ const Signup = () => {
                     </div>
 
                     <div className='d-flex justify-content-center mt-4'>
-                        <p>Have an account? </p><p onClick={() => navigate('/login')} className='mx-2 text-primary' style={{ cursor: 'pointer' }}>Login</p>
+                        <p>Have an account? </p><p onClick={() => navigate('/youtube-clone/login')} className='mx-2 text-primary' style={{ cursor: 'pointer' }}>Login</p>
                     </div>
                 </div>
             </div>

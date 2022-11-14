@@ -35,10 +35,10 @@ function App() {
     <div className="App container">
       <Header user={user} />
       <Routes>
-        <Route path='/' element={<Home user={user} />} />
+        <Route path='/youtube-clone' element={<Home user={user} />} />
         {user.length === 0 ? <>
-          <Route path='/login' element={<Login />} />
-          <Route path='/signup' element={<Signup />} />
+          <Route path='/youtube-clone/login' element={<Login />} />
+          <Route path='/youtube-clone/signup' element={<Signup />} />
         </> : null}
       </Routes>
     </div>

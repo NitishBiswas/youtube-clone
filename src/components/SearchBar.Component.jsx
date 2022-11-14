@@ -14,7 +14,7 @@ const SearchBar = ({ onSubmitText, user }) => {
                 icon: 'info',
                 title: 'Please login to search videos!',
                 showConfirmButton: false,
-                timer: 2000
+                timer: 3000
             })
             setSearchText('');
         } else {
@@ -30,7 +30,7 @@ const SearchBar = ({ onSubmitText, user }) => {
                 icon: 'info',
                 title: 'Please login to search videos!',
                 showConfirmButton: false,
-                timer: 2000
+                timer: 3000
             })
             setSearchText('');
         }

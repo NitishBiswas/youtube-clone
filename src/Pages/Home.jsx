@@ -4,6 +4,7 @@ import '../App.css';
 import SearchBar from '../components/SearchBar.Component';
 import VideoList from '../components/VideoList.Component';
 import Video from '../components/Video.Component';
+import Swal from 'sweetalert2';
 
 function Home({ user }) {
     const [videos, setVideos] = useState([]);
@@ -11,12 +12,20 @@ function Home({ user }) {
 
     const getVideos = text => {
 
-        fetch(`https://www.googleapis.com/youtube/v3/search?key=AIzaSyBpMkTsh9ijCT0oYWtR7RDzqZg10jnZ5wc&maxResults=6&q=${text}&type=video&part=snippet&videoEmbeddable=true`)
+        fetch(`https://www.googleapis.com/youtube/v3/search?key=AIzaSyBe22T4tpggmEGafIJ8XgEyfDD6brupB1g&maxResults=6&q=${text}&type=video&part=snippet&videoEmbeddable=true`)
             .then(res => res.json())
             .then(res => {
                 setVideos(res.items);
                 setVideo(res.items[0]);
-            }).catch(err => console.log(err));
+            }).catch(err => {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: err.message,
+                    showConfirmButton: false,
+                    timer: 3000
+                })
+            });
     }
 
     const onSubmitText = text => {
